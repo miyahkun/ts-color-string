@@ -1,0 +1,15 @@
+{
+  "eslint.packageManager": "yarn",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.disableLanguages": [
+    "markdown"
+  ],
+  "jest.pathToConfig": "./jest.config.ts",
+  "jest.pathToJest": "yarn test",
+  "jest.rootPath": "./",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

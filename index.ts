@@ -20,18 +20,18 @@ export interface ColorString {
   };
 }
 
-type ReverseColorNames = { [k: string]: string };
-type ColorModel = {
+export type ReverseColorNames = { [k: string]: string };
+export type ColorModel = {
   model: string;
-  value: number[] | null;
+  value: ColorNumExp;
 };
-type ColorNumExp = [number, number, number, number];
-type ColorArray = number[];
-type ColorArrayishExp = Array<number | number[]>;
-type ColorStrExp = string;
+export type ColorNumExp = [number, number, number, number];
+export type ColorArray = number[];
+export type ColorArrayishExp = Array<number | number[]>;
+export type ColorStrExp = string;
 
-const colorNames: { [k: string]: RGB } = cn;
-const reverseNames: ReverseColorNames = {};
+export const colorNames: { [k: string]: RGB } = cn;
+export const reverseNames: ReverseColorNames = {};
 
 for (let name in colorNames) {
   if (colorNames.hasOwnProperty(name)) {
@@ -247,7 +247,7 @@ const convert2Hsl = (...args: ColorArrayishExp): ColorStrExp => {
         hsla[1] +
         '%, ' +
         hsla[2] +
-        '%,' +
+        '%, ' +
         hsla[3] +
         ')';
 };

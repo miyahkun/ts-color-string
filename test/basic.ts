@@ -1,13 +1,31 @@
-const assert = require('assert');
-const { colorString } = require('../dist/index.js');
+import assert from 'assert';
+import { colorString } from '../index';
+import type { ColorModel, ColorNumExp } from '../index';
 
-function normalizeAlpha(res) {
-  if (res.model === 'rgb' && res.value.length >= 4) {
-    res.value[3] = res.value[3].toFixed(2);
-  } else if (res.length >= 4) {
-    res[3] = res[3].toFixed(2);
+const isColorNumExp = (
+  res: ColorModel | ColorNumExp | null
+): res is ColorNumExp => {
+  return Array.isArray(res) && res.length >= 4;
+};
+
+function normalizeAlpha(res: ColorModel | ColorNumExp | null) {
+  if (res === null) {
+    return null;
   }
-  return res;
+
+  if (isColorNumExp(res)) {
+    const normRes = [...res.slice(0, 3), res[3].toFixed(2)];
+    return normRes;
+  } else if (res.model === 'rgb' && res.value.length >= 4) {
+    const normRes: {
+      model: string;
+      value: Array<number | string>;
+    } = { ...res };
+    normRes.value = [...res.value.slice(0, 3), res.value[3].toFixed(2)];
+    return normRes;
+  } else {
+    return res;
+  }
 }
 
 assert.deepStrictEqual(colorString.get.rgb('#fef'), [255, 238, 255, 1]);
@@ -83,6 +101,11 @@ assert.deepStrictEqual(colorString.get('transparent'), {
   model: 'rgb',
   value: [0, 0, 0, 0],
 });
+assert.deepStrictEqual(colorString.get('yellow'), {
+  model: 'rgb',
+  value: [255, 255, 0, 1],
+});
+
 assert.deepStrictEqual(colorString.get('hsl(240, 100%, 50.5%)'), {
   model: 'hsl',
   value: [240, 100, 50.5, 1],

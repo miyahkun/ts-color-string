@@ -11,11 +11,11 @@
   "repository": "Qix-/color-string",
   "scripts": {
     "build": "tsc",
-    "test": "ts-node test/basic.js"
+    "test": "ts-node test/basic.ts"
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.ts"
   ],
   "dependencies": {
     "color-name": "^1.0.0",

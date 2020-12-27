@@ -6,10 +6,16 @@
 
 ## Install
 
-With [npm](http://npmjs.org/):
+With [npm](https://www.npmjs.com/):
 
 ```console
 $ npm install color-string
+```
+
+or with [yarn](https://classic.yarnpkg.com/):
+
+```console
+$ yarn add color-string
 ```
 
 ## Usage
@@ -17,9 +23,13 @@ $ npm install color-string
 ### Parsing
 
 ```js
+import { colorString } from 'color-string';
+
 colorString.get('#FFF')                          // {model: 'rgb', value: [255, 255, 255, 1]}
 colorString.get('#FFFA')                         // {model: 'rgb', value: [255, 255, 255, 0.67]}
 colorString.get('#FFFFFFAA')                     // {model: 'rgb', value: [255, 255, 255, 0.67]}
+// not case-sensitive
+colorString.get('#FfffFFaa')                     // {model: 'rgb', value: [255, 255, 255, 0.67]}
 colorString.get('hsl(360, 100%, 50%)')           // {model: 'hsl', value: [0, 100, 50, 1]}
 colorString.get('hwb(60, 3%, 60%)')              // {model: 'hwb', value: [60, 3, 60, 1]}
 

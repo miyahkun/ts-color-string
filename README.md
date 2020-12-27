@@ -1,8 +1,9 @@
-# color-string
+# ts-color-string
 
-[![Build Status](https://travis-ci.org/Qix-/color-string.svg?branch=master)](https://travis-ci.org/Qix-/color-string)
+[![Build Status](https://travis-ci.com/miyahkun/ts-color-string.svg?branch=master)](https://travis-ci.com/miyahkun/ts-color-string)
 
-> library for parsing and generating CSS color strings.
+> Library for parsing and generating CSS color strings in TypeScript.
+> This repository is mostly based on [Qix-/color-string](https://github.com/Qix-/color-string).
 
 ## Install
 
